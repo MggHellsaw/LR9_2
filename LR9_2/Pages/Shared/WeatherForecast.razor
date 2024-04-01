@@ -1,0 +1,16 @@
+﻿@page "/weather"
+
+<h1>Weather Forecast</h1>
+
+@code {
+    private WeatherResponse Weather { get; set; }
+    private string City = "Odesa";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var service = new WeatherService();
+        double lat = 46.4825;
+        double lon = 30.7233;
+        Weather = await service.GetWeatherAsync(lat, lon);
+    }
+}
